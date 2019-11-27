@@ -1,5 +1,4 @@
 const fs = require('fs');
-const csv = require('csvtojson'); 
 
 class Importer {
 
@@ -11,11 +10,8 @@ class Importer {
         });  
     }
 
-    importSync(path) {
-        return csv().fromFile(path)
-        .then((jsonObj) => {
-            console.log(jsonObj)
-        });
+    importSync(path, callback) {
+        callback(fs.readFileSync(path, 'utf-8'));    
     }
 }
 module.exports = Importer;

@@ -3,7 +3,7 @@ const EventEmitter = require('events');
 
 class DirWatcher extends EventEmitter {
 
-    watch(path, delay) {
+    watch(path, delay, callback) {
         let fsWait = false;
         fs.watch(path, (event, filename) => {
             if (filename) {
@@ -15,7 +15,7 @@ class DirWatcher extends EventEmitter {
                     fsWait = false;
                 }, delay);   
 
-                this.emit('changed', filename);
+                callback(filename);
             }
         });
     }
