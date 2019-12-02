@@ -1,5 +1,4 @@
 const fs = require('fs');
-const concat = require('concat');
 const csv = require('csvtojson'); 
 const program = require('commander');
 
@@ -11,26 +10,39 @@ function transform(str) {
     console.log(str.toUpperCase());
 }
 
-function outputFile(filePath) {
-    const reader = fs.createReadStream(filePath, {encoding: 'utf-8'});
-    reader.on('readable', () => {
-        console.log(reader.read());
-    });
+function outputFile(filePath, errorMessage) {
+    if(errorMessage !== null) {
+        console.log(errorMessage);
+        return;
+    }
+    const reader = fs.createReadStream(filePath);
+    reader.pipe(process.stdout);
 }
 
-function convertFromFile(filePath) {
-    csv().fromFile(filePath).then((jsonObj) => {
-        console.log(jsonObj);
-    }) 
+function convertFromFile(filePath, errorMessage) {
+    if(errorMessage !== null) {
+        console.log(errorMessage);
+        return;
+    }
+    const reader = fs.createReadStream(filePath);
+    reader.pipe(csv()).pipe(process.stdout);
 }
 
-function convertToFile(filePath) {
+function convertToFile(filePath, errorMessage) {
+    if(errorMessage !== null) {
+        console.log(errorMessage);
+        return;
+    }
     const reader = fs.createReadStream(filePath);
     const writer = fs.createWriteStream(filePath.replace('.csv', '.json'));
     reader.pipe(csv()).pipe(writer);
 }
 
-function cssBundler(path) {
+function cssBundler(path, errorMessage) {
+    if(errorMessage !== null) {
+        console.log(errorMessage);
+        return;
+    }
     const writer = fs.createWriteStream('bundle.css');
 
     fs.readdir(path, (err, files) => {
@@ -47,50 +59,36 @@ function cssBundler(path) {
 }
 
 program
-    .option('-a, --actiion <value>') 
+    .option('-a, --action <value>') 
     .option('-f, --file <value>') 
     .option('-p, --path <value>')
     .option('-h, --help') 
     .action(function (args) {
-        if(program.actiion) {
-            switch(program.actiion) {
-                case 'reverse':
-                    reverse(args.rawArgs[4]);
-                    break;
-                case 'transform':
-                    transform(args.rawArgs[4]);
-                    break;
-                case 'outputFile':
-                        if(program.file === undefined) {
-                            console.log('Error! This action requires \"-file\" option')
-                            break;
-                        }
-                    outputFile(program.file);
-                    break;
-                case 'cssBundler':
-                    if(program.path === undefined) {
-                        console.log('Error! This action requires \"-path\" option')
-                        break;
-                    }
-                    cssBundler(program.path);
+        var errorMessage = null;
+        if(program.file === undefined) {
+            errorMessage = 'Error! This action requires additional option. Run app with --help (-h) flag.';
+        }
+        switch(program.action) {
+            case 'reverse':
+                reverse(args);
                 break;
-                case 'convertFromFile':
-                        if(program.file === undefined) {
-                            console.log('Error! This action requires \"-file\" option')
-                            break;
-                        }
-                    convertFromFile(program.file);
-                    break;
-                case 'convertToFile':
-                        if(program.file === undefined) {
-                            console.log('Error! This action requires \"-file\" option')
-                            break;
-                        }
-                    convertToFile(program.file);
-                    break;
-                default:
-                    console.log('Error! There is no such action!');
-            }
+            case 'transform':
+                transform(args);
+                break;
+            case 'outputFile':                    
+                outputFile(program.file, errorMessage);
+                break;
+            case 'cssBundler':                
+                cssBundler(program.path, errorMessage);
+            break;
+            case 'convertFromFile':                  
+                convertFromFile(program.file, errorMessage);
+                break;
+            case 'convertToFile':                   
+                convertToFile(program.file, errorMessage);
+                break;
+            default:
+                console.log('Error! There is no such action!');
         }
     });
 
