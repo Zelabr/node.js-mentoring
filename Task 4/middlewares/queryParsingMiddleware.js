@@ -1,4 +1,6 @@
+import url from 'url';
 export const queryParserMiddleware = function (req, res, next) {    
-    console.log('Parsing query...')
+    req.query = url.parse(req.url).query;
+    console.log('Parsed query...' + req.query);
     next();
 }

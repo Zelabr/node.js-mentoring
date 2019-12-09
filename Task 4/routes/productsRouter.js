@@ -6,7 +6,7 @@ productsRouter.get('/', function(req, res) {
 });
 
 productsRouter.post('/', function(req, res) {
-  res.send('Return all products');
+  res.send('Add product');
 });
 
 productsRouter.get('/:id', function(req, res) {
