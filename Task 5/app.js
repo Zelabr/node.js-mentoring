@@ -9,12 +9,6 @@ export const app = express();
 
 
 app.use(passport.initialize());
-//passport.use
-//choose one
-import {} from './middlewares/passportLocalMiddleware.js'
-import {} from './middlewares/passportFacebookMiddleware.js';
-import {} from './middlewares/passportTwitterMiddleware.js';
-import {} from './middlewares/passportGoogleMiddleware.js';
  
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
