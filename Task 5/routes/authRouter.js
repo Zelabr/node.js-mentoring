@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
 import _ from 'underscore';
 
@@ -16,7 +15,6 @@ import {passportGoogleCallback} from '../service/passport/passportGoogleOAuth.js
 
 
 export const authRouter = express.Router();
-const jsonParser = bodyParser.json();
 
 const tokens = [{
   id: "1",
