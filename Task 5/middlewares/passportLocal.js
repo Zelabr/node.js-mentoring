@@ -9,7 +9,7 @@ const userData = [{id: "1",
                isActive: "true"
               }];
 
-export default passport.use(new LocalStrategy({
+passport.use(new LocalStrategy({
     usernameField: 'firstName',
     passwordField: 'lastName',
     session: false

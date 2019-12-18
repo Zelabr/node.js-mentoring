@@ -9,7 +9,7 @@ const userData = [{googleId: "1",
                isActive: "true"
               }];
 
-export default passport.use(new GoogleStrategy({
+passport.use(new GoogleStrategy({
     consumerKey: GOOGLE_CONSUMER_KEY,
     consumerSecret: GOOGLE_CONSUMER_SECRET,
     callbackURL: "http://localhost:3000/auth/passport/google"

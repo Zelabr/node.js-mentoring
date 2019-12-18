@@ -9,7 +9,7 @@ const userData = [{twitterId: "1",
                isActive: "true"
               }];
 
-export default passport.use(new TwitterStrategy({
+passport.use(new TwitterStrategy({
     consumerKey: TWITTER_CONSUMER_KEY,
     consumerSecret: TWITTER_CONSUMER_SECRET,
     callbackURL: "http://localhost:3000/auth/passport/twitter"
