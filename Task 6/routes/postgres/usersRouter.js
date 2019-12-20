@@ -1,8 +1,8 @@
 const express = require('express');
-const sequelize = require('../../models/config/sequelize.js');
+const sequelize = require('../../sequelize/sequelize.js');
 const usersRouter = express.Router();
 
-usersRouter.get('/', function(req, res) {
+usersRouter.get('/', (req, res) => {
   sequelize.User.findAll().then(users => res.json(users));
 });
 
