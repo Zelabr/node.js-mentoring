@@ -1,4 +1,4 @@
-module.exports = {
+const userMigration = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Users', {
       id: {
@@ -30,3 +30,5 @@ module.exports = {
     return queryInterface.dropTable('Users');
   }
 };
+
+module.exports = userMigration;

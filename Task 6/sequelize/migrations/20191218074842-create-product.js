@@ -1,4 +1,4 @@
-module.exports = {
+const productMigration = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Products', {
       id: {
@@ -14,7 +14,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       reviews: {
-        type: Sequelize.ARRAY(Sequelize.TEXT) 
+        type: Sequelize.ARRAY(Sequelize.TEXT)
       },
       createdAt: {
         allowNull: false,
@@ -30,3 +30,5 @@ module.exports = {
     return queryInterface.dropTable('Products');
   }
 };
+
+module.exports = productMigration;
