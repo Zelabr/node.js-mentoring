@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Homework 1",
   "main": "app.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
-    "start":"nodemon --exec babel-node app.js",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yahor",
@@ -13,8 +13,9 @@
   "license": "ISC",
   "devDependencies": {
     "Babel": "0.0.1",
+    "babel-node": "0.0.1-security",
     "env": "0.0.2",
-    "node": "^13.1.0",
+    "node": "^13.3.0",
     "nodemon": "^1.19.4",
     "preset": "^1.0.0",
     "esm": "^3.2.25"

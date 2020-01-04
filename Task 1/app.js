@@ -1,9 +1,8 @@
-import info from './config/app-config.json';
+import config from './config/app-config.js';
 import User from './models/User.js';
 import Product from './models/Product.js';
 
-console.log(info.name);
+console.log(config.name);
 
 const Yahor = new User();
 const Pizza = new Product();
-

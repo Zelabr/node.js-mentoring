@@ -1,7 +1,6 @@
-export default class User {
+class User {
     constructor() {
         console.log('User module');
     }
 }
-
- 
+export default User;
