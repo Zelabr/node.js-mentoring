@@ -1,8 +1,9 @@
-const express = require('express');
-const productsRouter = require('./routes/postgres/productsRouter.js');
-const usersRouter = require('./routes/postgres/usersRouter.js');
-const indexRouter = require('./routes/indexRouter.js');
-const bodyParser = require('body-parser');
+import express from 'express';
+import productsRouter from './routes/postgres/productsRouter.js';
+import usersRouter from './routes/postgres/usersRouter.js';
+import indexRouter from './routes/indexRouter.js';
+import bodyParser from 'body-parser';
+
 const jsonParser = bodyParser.json();
 const app = express();
 
@@ -12,4 +13,4 @@ app.use('/', indexRouter);
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
 
-module.exports = app;
+export default app;

@@ -6,5 +6,4 @@ const productModel = (sequelize, DataTypes) => {
   }, {});
   return User;
 };
-
-module.exports = productModel;
+export default productModel;

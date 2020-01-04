@@ -31,4 +31,4 @@ const userMigration = {
   }
 };
 
-module.exports = userMigration;
+export default userMigration;
