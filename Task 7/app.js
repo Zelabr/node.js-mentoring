@@ -1,16 +1,17 @@
-const express = require('express');
-const mongoConnection = require('./mongoose/config/mongoose.js');
+import express from 'express';
+import mongoConnection from './mongoose/config/mongoose.js';
 
-const postgresProductRouter = require('./routes/postgres/productRouter.js');
-const postgresUserRouter = require('./routes/postgres/userRouter.js');
+import postgresProductRouter from './routes/postgres/productRouter.js';
+import postgresUserRouter from './routes/postgres/userRouter.js';
 
-const mongoProductRouter = require('./routes/mongo/productRouter.js');
-const mongoUserRouter = require('./routes/mongo/userRouter.js');
-const mongoCitiyRouter = require('./routes/mongo/cityRouter.js');
+import mongoProductRouter from './routes/mongo/productRouter.js';
+import mongoUserRouter from './routes/mongo/userRouter.js';
+import mongoCityRouter from './routes/mongo/cityRouter.js';
 
-const indexRouter = require('./routes/indexRouter.js');
+import indexRouter from './routes/indexRouter.js';
 
-const bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
+
 const jsonParser = bodyParser.json();
 
 const app = express();
@@ -23,11 +24,11 @@ app.use(jsonParser);
 
 app.use('/mongo/products', mongoProductRouter);
 app.use('/mongo/users', mongoUserRouter);
-app.use('/mongo/cities', mongoCitiyRouter);
+app.use('/mongo/cities', mongoCityRouter);
 
 app.use('/postgres/products', postgresProductRouter);
 app.use('/postgres/users', postgresUserRouter);
 
 app.use('/', indexRouter);
 
-module.exports = app;
+export default app;

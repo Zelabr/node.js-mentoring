@@ -1,4 +1,4 @@
-const productModel = (sequelize, DataTypes) => {
+const userModel = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
@@ -7,4 +7,4 @@ const productModel = (sequelize, DataTypes) => {
   return User;
 };
 
-module.exports = productModel;
+export default userModel;

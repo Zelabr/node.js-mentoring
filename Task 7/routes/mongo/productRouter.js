@@ -1,5 +1,6 @@
-const express = require('express');
-const Product = require('../../mongoose/models/product.js');
+import express from 'express';
+import Product from '../../mongoose/models/product.js';
+
 const productRouter = express.Router();
 
 productRouter.get('/', (req, res) => {
@@ -8,7 +9,7 @@ productRouter.get('/', (req, res) => {
 
 productRouter.post('/', (req, res) => {
     Product.create(req.body, err => {
-        if(err) {
+        if (err) {
             console.log(err.message);
         }
     });
@@ -22,4 +23,4 @@ productRouter.get('/:id/reviews', (req, res) => {
     Product.findById(req.params.id).then(product => res.json(product.reviews));
 });
 
-module.exports = productRouter;
+export default productRouter;

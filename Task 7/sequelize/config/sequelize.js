@@ -1,16 +1,19 @@
-const Sequelize = require('sequelize');
-const UserModel = require('../models/user.js');
-const ProductModel = require('../models/product.js');
-const { configure } = require('sequelize-pg-utilities');
-const config = require('../config/config.json');
-const { name, user, password, options } = configure(config);
+import Sequelize from 'sequelize';
+import UserModel from '../models/user.js';
+import ProductModel from '../models/product.js';
+import config from '../config/config.js';
+
+const name = config.development.database;
+const user = config.development.username;
+const password = config.development.password;
+const options = {
+  "dialect": config.development.dialect,
+  "host": config.development.host
+};
 
 const sequelize = new Sequelize(name, user, password, options);
 
 const User = UserModel(sequelize, Sequelize);
 const Product = ProductModel(sequelize, Sequelize);
 
-module.exports = {
-  User,
-  Product
-}
+export default { User, Product };
