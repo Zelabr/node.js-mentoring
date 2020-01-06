@@ -1,5 +1,6 @@
-const express = require('express');
-const User = require('../../mongoose/models/user.js');
+import express from 'express';
+import User from '../../mongoose/models/user.js';
+
 const userRouter = express.Router();
 
 userRouter.get('/', (req, res) => {
@@ -8,10 +9,10 @@ userRouter.get('/', (req, res) => {
 
 userRouter.post('/', (req, res) => {
     User.create(req.body, err => {
-        if(err) {
+        if (err) {
             console.log(err.message);
         }
     });
 });
 
-module.exports = userRouter;
+export default userRouter;

@@ -1,4 +1,4 @@
-const moduleProduct = (sequelize, DataTypes) => {
+const productModel = (sequelize, DataTypes) => {
   const Product = sequelize.define('Product', {
     name: DataTypes.STRING,
     price: DataTypes.INTEGER,
@@ -7,4 +7,4 @@ const moduleProduct = (sequelize, DataTypes) => {
   return Product;
 };
 
-module.exports = moduleProduct;
+export default productModel;

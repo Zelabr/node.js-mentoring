@@ -1,6 +1,6 @@
 import express from 'express';
-import {addProduct} from '../api/controllers/product.js';
-import {getProductById} from '../api/controllers/product.js';
+import { addProduct } from '../api/controllers/product.js';
+import { getProductById } from '../api/controllers/product.js';
 const productRouter = express.Router();
 
 productRouter.post('/', (req, res) => {
@@ -15,4 +15,4 @@ productRouter.get('/:id/reviews', (req, res) => {
 
 });
 
-export {productRouter};
+export { productRouter };

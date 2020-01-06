@@ -1,8 +1,9 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
+
 const dbAddress = 'mongodb://localhost/task7';
 const connectMongo = () => {
     mongoose.connect(dbAddress, err => {
-        if(err) {
+        if (err) {
             console.log(err.message);
             return;
         }
@@ -10,4 +11,4 @@ const connectMongo = () => {
     return mongoose.connection;
 }
 
-module.exports = connectMongo();
+export default connectMongo();

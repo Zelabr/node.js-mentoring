@@ -31,4 +31,4 @@ const productMigration = {
   }
 };
 
-module.exports = productMigration;
+export default productMigration;

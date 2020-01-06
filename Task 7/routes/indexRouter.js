@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
 const indexRouter = express.Router();
 
 indexRouter.get('/', (req, res) => {
   res.send('Home page');
 });
 
-module.exports = indexRouter;
+export default indexRouter;

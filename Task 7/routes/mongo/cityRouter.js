@@ -1,5 +1,6 @@
-const express = require('express');
-const City = require('../../mongoose/models/city.js');
+import express from 'express';
+import City from '../../mongoose/models/city.js';
+
 const cityRouter = express.Router();
 
 cityRouter.get('/', (req, res) => {
@@ -8,7 +9,7 @@ cityRouter.get('/', (req, res) => {
 
 cityRouter.post('/', (req, res) => {
     City.create(req.body, err => {
-        if(err) {
+        if (err) {
             console.log(err.message);
         }
     });
@@ -23,6 +24,6 @@ cityRouter.get('/random', (req, res) => {
         });
 });
 
-module.exports = cityRouter;
+export default cityRouter;
 
 

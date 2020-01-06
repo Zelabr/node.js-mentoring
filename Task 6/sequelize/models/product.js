@@ -7,4 +7,4 @@ const moduleProduct = (sequelize, DataTypes) => {
   return Product;
 };
 
-module.exports = moduleProduct;
+export default moduleProduct;

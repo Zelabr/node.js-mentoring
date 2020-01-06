@@ -1,6 +1,7 @@
-const express = require('express');
-const sequelize = require('../../sequelize/config/sequelize.js');
-const productsRouter =  express.Router();
+import express from 'express';
+import sequelize from '../../sequelize/config/sequelize.js';
+
+const productsRouter = express.Router();
 
 productsRouter.get('/', (req, res) => {
   sequelize.Product.findAll().then(products => res.json(products));
@@ -18,4 +19,4 @@ productsRouter.get('/:id/reviews', (req, res) => {
   sequelize.Product.findByPk(req.params.id).then(product => res.json(product.reviews));
 });
 
-module.exports = productsRouter;
+export default productsRouter;

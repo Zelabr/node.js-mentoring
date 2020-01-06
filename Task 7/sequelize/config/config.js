@@ -1,4 +1,4 @@
-{
+const config = {
   "development": {
     "username": "postgres",
     "password": "admin",
@@ -9,3 +9,5 @@
     "operatorsAliases": 0
   }
 }
+
+export default config;
