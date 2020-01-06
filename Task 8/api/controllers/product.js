@@ -1,4 +1,4 @@
-import {Product} from '../models/product.js';
+import { Product } from '../models/product.js';
 
 const addProduct = (req, res) => {
     let newProduct = Product(req.swagger.params.product.value);
@@ -21,7 +21,7 @@ const getProductById = (req, res) => {
             res.status(404).json({ message: 'Product not found.' });
         } else {
             console.log('In controller!');
-            res.json({ name: product.name, price: product.price, reviews: product.reviews })        
+            res.json({ name: product.name, price: product.price, reviews: product.reviews })
         }
     });
 };
@@ -51,4 +51,4 @@ const deleteProduct = (req, res) => {
     });
 };
 
-export {addProduct, getProductById, updateProductWithForm, deleteProduct};
+export { addProduct, getProductById, updateProductWithForm, deleteProduct };

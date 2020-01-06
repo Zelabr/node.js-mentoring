@@ -1,6 +1,6 @@
 import express from 'express';
-import {mongoConnection} from './config/mongoose/mongoose.js';
-import {productRouter} from './routes/productRouter.js';
+import { mongoConnection } from './config/mongoose/mongoose.js';
+import { productRouter } from './routes/productRouter.js';
 import bodyParser from 'body-parser';
 const jsonParser = bodyParser.json();
 
@@ -14,4 +14,4 @@ app.use(jsonParser);
 
 app.use('/product', productRouter);
 
-export {app};
+export { app };
